@@ -143,7 +143,7 @@ def test_host_header_preservation_with_user_header(mock_get_client):
     mock_client.build_request.assert_called_once()
     # Verify the Host header was set on the request object
     assert mock_request.headers.get("Host") == custom_host
-    mock_client.send.assert_called_once_with(mock_request)
+    mock_client.send.assert_called_once_with(mock_request, follow_redirects=True)
 
 
 @patch("core.helper.ssrf_proxy._get_ssrf_client")
